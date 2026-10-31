@@ -1,0 +1,46 @@
+Actual CTest verbose output. Private workstation paths replaced with [PROJECT] / [USER_HOME].
+UpdateCTestConfiguration  from :[PROJECT]/build-release/DartConfiguration.tcl
+Parse Config file:[PROJECT]/build-release/DartConfiguration.tcl
+Test project [PROJECT]/build-release
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+    Start 1: expense_core
+
+1: Test command: [PROJECT]\build-release\expense_tests.exe
+1: Working Directory: [PROJECT]/build-release
+1: Test timeout computed to be: 60
+1: PASS: 10128 core assertions.
+1/2 Test #1: expense_core .....................   Passed    0.57 sec
+test 2
+    Start 2: expense_cli
+
+2: Test command: [USER_HOME]\AppData\Local\Programs\Python\Python314\python.exe "[PROJECT]/tests/test_cli.py" "[PROJECT]/build-release/expense_tracker.exe"
+2: Working Directory: [PROJECT]/build-release
+2: Test timeout computed to be: 60
+2: test_aggregate_overflow_recovery (__main__.CliTests.test_aggregate_overflow_recovery) ... ok
+2: test_arguments_and_help (__main__.CliTests.test_arguments_and_help) ... ok
+2: test_corrupt_file_is_never_overwritten (__main__.CliTests.test_corrupt_file_is_never_overwritten) ... ok
+2: test_empty_views_and_zero_totals (__main__.CliTests.test_empty_views_and_zero_totals) ... ok
+2: test_eof_at_each_prompt (__main__.CliTests.test_eof_at_each_prompt) ... ok
+2: test_eof_saves_completed_entry_and_discards_partial (__main__.CliTests.test_eof_saves_completed_entry_and_discards_partial) ... ok
+2: test_failed_exit_save_and_eof_nonzero (__main__.CliTests.test_failed_exit_save_and_eof_nonzero) ... ok
+2: test_full_lifecycle_and_reload (__main__.CliTests.test_full_lifecycle_and_reload) ... ok
+2: test_invalid_fields_recover (__main__.CliTests.test_invalid_fields_recover) ... ok
+2: test_oversized_and_control_input (__main__.CliTests.test_oversized_and_control_input) ... ok
+2: 
+2: ----------------------------------------------------------------------
+2: Ran 10 tests in 0.401s
+2: 
+2: OK
+2/2 Test #2: expense_cli ......................   Passed    0.60 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   1.18 sec
+
+Exit code: 0

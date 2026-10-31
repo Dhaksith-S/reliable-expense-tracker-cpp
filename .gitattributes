@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.zip binary
+# Preserve real terminal prompts and CTest output, including trailing spaces.
+docs/*.txt -whitespace

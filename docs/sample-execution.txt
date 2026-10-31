@@ -1,0 +1,322 @@
+Reliable Expense Tracker CLI - actual process output
+Synthetic demonstration data. Inputs are listed separately because redirected stdin does not echo.
+
+=== Add, list, filter, totals, delete and explicit save ===
+INPUT (one line per prompt):
+1
+2026-10-31
+Food
+Lunch, "special"
+125.50
+1
+2026-10-31
+Travel
+Bus fare
+40.00
+1
+2026-10-31
+Food
+Tea
+0.25
+2
+3
+Food
+4
+Food
+5
+6
+2
+5
+7
+8
+
+ACTUAL STDOUT:
+Loaded 0 expense(s). Amounts are in INR.
+
+Reliable Expense Tracker CLI
+1. Add Expense
+2. View All Expenses
+3. View Expenses by Category
+4. View Category Total
+5. View Overall Total
+6. Delete Expense
+7. Save Expenses
+8. Exit
+Choose [1-8]: Date (YYYY-MM-DD): Category: Description: Amount (INR, e.g. 125.50): Added expense #1.
+
+Reliable Expense Tracker CLI
+1. Add Expense
+2. View All Expenses
+3. View Expenses by Category
+4. View Category Total
+5. View Overall Total
+6. Delete Expense
+7. Save Expenses
+8. Exit
+Choose [1-8]: Date (YYYY-MM-DD): Category: Description: Amount (INR, e.g. 125.50): Added expense #2.
+
+Reliable Expense Tracker CLI
+1. Add Expense
+2. View All Expenses
+3. View Expenses by Category
+4. View Category Total
+5. View Overall Total
+6. Delete Expense
+7. Save Expenses
+8. Exit
+Choose [1-8]: Date (YYYY-MM-DD): Category: Description: Amount (INR, e.g. 125.50): Added expense #3.
+
+Reliable Expense Tracker CLI
+1. Add Expense
+2. View All Expenses
+3. View Expenses by Category
+4. View Category Total
+5. View Overall Total
+6. Delete Expense
+7. Save Expenses
+8. Exit
+Choose [1-8]: ID                   Date        Category           Description                           Amount (INR)
+------------------------------------------------------------------------------------------------------
+1                    2026-10-31  Food               Lunch, "special"                            125.50
+2                    2026-10-31  Travel             Bus fare                                     40.00
+3                    2026-10-31  Food               Tea                                           0.25
+
+Reliable Expense Tracker CLI
+1. Add Expense
+2. View All Expenses
+3. View Expenses by Category
+4. View Category Total
+5. View Overall Total
+6. Delete Expense
+7. Save Expenses
+8. Exit
+Choose [1-8]: Category: ID                   Date        Category           Description                           Amount (INR)
+------------------------------------------------------------------------------------------------------
+1                    2026-10-31  Food               Lunch, "special"                            125.50
+3                    2026-10-31  Food               Tea                                           0.25
+
+Reliable Expense Tracker CLI
+1. Add Expense
+2. View All Expenses
+3. View Expenses by Category
+4. View Category Total
+5. View Overall Total
+6. Delete Expense
+7. Save Expenses
+8. Exit
+Choose [1-8]: Category: Category total (Food): INR 125.75
+
+Reliable Expense Tracker CLI
+1. Add Expense
+2. View All Expenses
+3. View Expenses by Category
+4. View Category Total
+5. View Overall Total
+6. Delete Expense
+7. Save Expenses
+8. Exit
+Choose [1-8]: Overall total: INR 165.75
+
+Reliable Expense Tracker CLI
+1. Add Expense
+2. View All Expenses
+3. View Expenses by Category
+4. View Category Total
+5. View Overall Total
+6. Delete Expense
+7. Save Expenses
+8. Exit
+Choose [1-8]: Expense ID: Expense deleted.
+
+Reliable Expense Tracker CLI
+1. Add Expense
+2. View All Expenses
+3. View Expenses by Category
+4. View Category Total
+5. View Overall Total
+6. Delete Expense
+7. Save Expenses
+8. Exit
+Choose [1-8]: Overall total: INR 125.75
+
+Reliable Expense Tracker CLI
+1. Add Expense
+2. View All Expenses
+3. View Expenses by Category
+4. View Category Total
+5. View Overall Total
+6. Delete Expense
+7. Save Expenses
+8. Exit
+Choose [1-8]: Expenses saved.
+
+Reliable Expense Tracker CLI
+1. Add Expense
+2. View All Expenses
+3. View Expenses by Category
+4. View Category Total
+5. View Overall Total
+6. Delete Expense
+7. Save Expenses
+8. Exit
+Choose [1-8]: Goodbye.
+ACTUAL STDERR:
+EXIT CODE: 0
+
+ACTUAL SAVED CSV (synthetic data):
+id,date,category,description,amount_paise
+1,2026-10-31,"Food","Lunch, ""special""",12550
+3,2026-10-31,"Food","Tea",25
+
+=== New process reloads the saved CSV ===
+INPUT (one line per prompt):
+2
+5
+8
+
+ACTUAL STDOUT:
+Loaded 2 expense(s). Amounts are in INR.
+
+Reliable Expense Tracker CLI
+1. Add Expense
+2. View All Expenses
+3. View Expenses by Category
+4. View Category Total
+5. View Overall Total
+6. Delete Expense
+7. Save Expenses
+8. Exit
+Choose [1-8]: ID                   Date        Category           Description                           Amount (INR)
+------------------------------------------------------------------------------------------------------
+1                    2026-10-31  Food               Lunch, "special"                            125.50
+3                    2026-10-31  Food               Tea                                           0.25
+
+Reliable Expense Tracker CLI
+1. Add Expense
+2. View All Expenses
+3. View Expenses by Category
+4. View Category Total
+5. View Overall Total
+6. Delete Expense
+7. Save Expenses
+8. Exit
+Choose [1-8]: Overall total: INR 125.75
+
+Reliable Expense Tracker CLI
+1. Add Expense
+2. View All Expenses
+3. View Expenses by Category
+4. View Category Total
+5. View Overall Total
+6. Delete Expense
+7. Save Expenses
+8. Exit
+Choose [1-8]: Goodbye.
+ACTUAL STDERR:
+EXIT CODE: 0
+
+=== Invalid menu, real-date validation, empty field and amount recovery ===
+INPUT (one line per prompt):
+oops
+1
+2026-02-29
+2024-02-29
+
+Health
+Vitamins
+-1
+0
+abc
+92233720368547758.08
+50.00
+5
+8
+
+ACTUAL STDOUT:
+Loaded 2 expense(s). Amounts are in INR.
+
+Reliable Expense Tracker CLI
+1. Add Expense
+2. View All Expenses
+3. View Expenses by Category
+4. View Category Total
+5. View Overall Total
+6. Delete Expense
+7. Save Expenses
+8. Exit
+Choose [1-8]: Invalid menu choice: enter 1-8.
+
+Reliable Expense Tracker CLI
+1. Add Expense
+2. View All Expenses
+3. View Expenses by Category
+4. View Category Total
+5. View Overall Total
+6. Delete Expense
+7. Save Expenses
+8. Exit
+Choose [1-8]: Date (YYYY-MM-DD): Invalid date: use a real date in YYYY-MM-DD (0001-9999).
+Date (YYYY-MM-DD): Category: Invalid field: enter 1-80 bytes without control characters.
+Category: Description: Amount (INR, e.g. 125.50): Invalid amount: enter a positive value with at most two decimal places, within range.
+Amount (INR, e.g. 125.50): Invalid amount: enter a positive value with at most two decimal places, within range.
+Amount (INR, e.g. 125.50): Invalid amount: enter a positive value with at most two decimal places, within range.
+Amount (INR, e.g. 125.50): Invalid amount: enter a positive value with at most two decimal places, within range.
+Amount (INR, e.g. 125.50): Added expense #4.
+
+Reliable Expense Tracker CLI
+1. Add Expense
+2. View All Expenses
+3. View Expenses by Category
+4. View Category Total
+5. View Overall Total
+6. Delete Expense
+7. Save Expenses
+8. Exit
+Choose [1-8]: Overall total: INR 175.75
+
+Reliable Expense Tracker CLI
+1. Add Expense
+2. View All Expenses
+3. View Expenses by Category
+4. View Category Total
+5. View Overall Total
+6. Delete Expense
+7. Save Expenses
+8. Exit
+Choose [1-8]: Expenses saved.
+Goodbye.
+ACTUAL STDERR:
+EXIT CODE: 0
+
+=== EOF cancels a partial entry ===
+INPUT (one line per prompt):
+1
+2026-10-31
+
+ACTUAL STDOUT:
+Loaded 3 expense(s). Amounts are in INR.
+
+Reliable Expense Tracker CLI
+1. Add Expense
+2. View All Expenses
+3. View Expenses by Category
+4. View Category Total
+5. View Overall Total
+6. Delete Expense
+7. Save Expenses
+8. Exit
+Choose [1-8]: Date (YYYY-MM-DD): Category: 
+End of input; incomplete entry cancelled.
+Goodbye.
+ACTUAL STDERR:
+EXIT CODE: 0
+
+=== Malformed file fails closed ===
+INPUT (one line per prompt):
+8
+
+ACTUAL STDOUT:
+ACTUAL STDERR:
+Cannot load data: CSV row 2: Invalid expense fields. File left untouched.
+EXIT CODE: 1
+Verified: malformed file bytes unchanged.

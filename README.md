@@ -1,5 +1,7 @@
 # Reliable Expense Tracker CLI
 
+[Public GitHub repository](https://github.com/Dhaksith-S/reliable-expense-tracker-cpp)
+
 A dependable, menu-driven expense tracker written in **standard C++17**.
 Record expenses in INR, inspect category spending, and keep data locally in a
 validated CSV file. All calculations use **integer paise**, so `0.10 + 0.20`
@@ -219,6 +221,9 @@ template is included at `docs/ci.yml.example`. Existing GitHub authentication
 does not grant the `workflow` scope, so the template is preserved outside the
 active workflows directory. To enable it later, an authorized maintainer can
 copy it to `.github/workflows/ci.yml`. No remote CI results are claimed.
+If using the same GitHub CLI OAuth authentication, the exact permission
+remediation is `gh auth refresh -h github.com -s workflow`; then copy the template
+to that path, commit it, and push. This is optional and does not affect local builds or tests.
 
 ## Screenshot gallery
 

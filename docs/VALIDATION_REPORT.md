@@ -79,7 +79,21 @@ add, deletion, failed operations, missing-file load, successful load, and overfl
 
 ## Release verification
 
-Git repository and remote publication verification are performed after evidence
-generation. The README, this report, the raw transcript, and raw test output are
-included in the source commit. Remote URL, visibility, branch head, and working
-tree status are checked against Git/GitHub directly rather than inferred.
+Publication succeeded at
+[Dhaksith-S/reliable-expense-tracker-cpp](https://github.com/Dhaksith-S/reliable-expense-tracker-cpp).
+GitHub reported `PUBLIC` visibility, a nonempty repository, and default branch
+`main`. The GitHub commit API, `git ls-remote`, and the local `HEAD` agreed on the
+pushed source commit. `git status --porcelain` was empty. Local Markdown links
+were checked and all resolved.
+
+The initial workflow-enabled push was rejected for missing OAuth `workflow`
+scope; no branch had been published at that point. The optional workflow was
+retained as `docs/ci.yml.example`, and the initial unpushed commit was amended
+before a normal successful push. No force-push was used. Active CI is the only
+permission-limited optional feature. To grant that scope later, run
+`gh auth refresh -h github.com -s workflow` and then activate the documented template.
+
+The README, report, transcript, test output, and release notes are committed.
+Git uses the authenticated account's public GitHub noreply address rather than
+the workstation's private email address. No credentials, user expense records,
+or local build artifacts are tracked.
